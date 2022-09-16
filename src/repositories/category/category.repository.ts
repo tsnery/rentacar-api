@@ -23,4 +23,14 @@ export class CategoryRepository {
 
     return newCategory
   }
+
+  list(): Category[] {
+    return this.categories
+  }
+
+  findByName(categoryName: Category['name']): Category | null {
+    const category = this.categories.find(item => item.name === categoryName)
+
+    return category || null
+  }
 }
