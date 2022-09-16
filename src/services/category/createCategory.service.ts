@@ -1,15 +1,14 @@
-import { Category } from "../../model/Category"
-import { CategoryRepository } from "../../repositories/category/category.repository"
+import { ICategoryRepository } from "../../repositories/category/category.types"
 import { CreateCategoryServiceRequest } from "./createCategory.types"
 
 export class CreateCategoryService {
-  private categoryRepository: CategoryRepository
+  private categoryRepository: ICategoryRepository
 
-  constructor(categoryRepository: CategoryRepository) {
+  constructor(categoryRepository: ICategoryRepository) {
     this.categoryRepository = categoryRepository
   }
 
-  execute({ name, description }: CreateCategoryServiceRequest): Category {
+  execute({ name, description }: CreateCategoryServiceRequest) {
 
     const categoryAlreadyExists = this.categoryRepository.findByName(name)
 
@@ -17,8 +16,6 @@ export class CreateCategoryService {
       throw new Error('Category already exists! Please, create another one.')
     }
 
-    const category = this.categoryRepository.create({ name, description })
-
-    return category
+    this.categoryRepository.create({ name, description })
   }
 }
