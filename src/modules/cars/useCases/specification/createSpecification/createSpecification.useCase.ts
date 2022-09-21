@@ -1,7 +1,7 @@
 import { ISpecificationRepository } from "../../../repositories/specification/specification.types";
 import { ICreateSpecificationRequest } from "./createSpecification.types";
 
-export class CreateSpecificationService {
+export class CreateSpecificationUseCase {
   constructor(private specificationRepository: ISpecificationRepository) {
     this.specificationRepository = specificationRepository
   }
