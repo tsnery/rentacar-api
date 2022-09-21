@@ -5,8 +5,18 @@ export class SpecificationRepository implements ISpecificationRepository {
 
   private specifications: Specification[]
 
-  constructor() {
+  private static INSTANCE: SpecificationRepository
+
+  private constructor() {
     this.specifications = []
+  }
+
+  public static getInstance() {
+    if (!this.INSTANCE) {
+      this.INSTANCE = new SpecificationRepository()
+    }
+
+    return this.INSTANCE
   }
 
   create({ name, description }: ICreateSpecificationDTO): void {
