@@ -4,8 +4,18 @@ import { CreateCategoryDTO, ICategoryRepository } from "./category.types";
 export class CategoryRepository implements ICategoryRepository {
   private categories: Category[]
 
-  constructor() {
+  private static INSTANCE: CategoryRepository
+
+  private constructor() {
     this.categories = []
+  }
+
+  public static getInstance() {
+    if (!this.INSTANCE) {
+      this.INSTANCE = new CategoryRepository()
+    }
+
+    return this.INSTANCE
   }
 
   create({ name, description }: CreateCategoryDTO): Category {
