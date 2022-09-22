@@ -1,11 +1,16 @@
 import express from 'express'
+import swaggerUI from 'swagger-ui-express'
 import { router } from './routes'
+
+import swaggerSetup from './docs/swagger.json'
 
 const PORT = 3001
 
 const app = express()
 
 app.use(express.json())
+
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSetup))
 
 app.use(router)
 
