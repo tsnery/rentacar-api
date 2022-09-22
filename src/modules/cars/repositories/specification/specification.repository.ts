@@ -32,4 +32,8 @@ export class SpecificationRepository implements ISpecificationRepository {
 
     return specification
   }
+
+  findAll(): Specification[] {
+    return this.specifications
+  }
 }
