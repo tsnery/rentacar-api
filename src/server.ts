@@ -12,8 +12,6 @@ app.use(express.json())
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSetup))
 
-//teste
-
 app.use(router)
 
 app.listen(PORT, () => console.log(`Runnning on http://localhost:${PORT}`)) 
