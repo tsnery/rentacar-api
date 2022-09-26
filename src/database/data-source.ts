@@ -9,6 +9,6 @@ export const AppDataSource = new DataSource({
   database: "rentacar",
   logging: false,
   entities: [],
-  migrations: [],
+  migrations: ["./src/database/migrations/*.ts"],
   subscribers: [],
 })
