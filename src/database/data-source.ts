@@ -8,7 +8,7 @@ export const AppDataSource = new DataSource({
   password: "rentacarpassword",
   database: "rentacar",
   logging: false,
-  entities: [],
+  entities: ["./src/modules/**/entities/*.ts"],
   migrations: ["./src/database/migrations/*.ts"],
   subscribers: [],
 })
