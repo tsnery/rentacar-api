@@ -1,4 +1,4 @@
-import { Category } from "../../model/Category";
+import { Category } from "../../entities/Category";
 import { CreateCategoryDTO, ICategoryRepository } from "./category.types";
 
 export class CategoryRepository implements ICategoryRepository {
