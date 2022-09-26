@@ -1,8 +1,11 @@
 import express from 'express'
 import swaggerUI from 'swagger-ui-express'
 import { router } from './routes'
+import { initializeDatabase } from './database'
 
 import swaggerSetup from './docs/swagger.json'
+
+initializeDatabase()
 
 const PORT = 3001
 

@@ -1,18 +1,8 @@
-import { DataSource } from "typeorm";
+import { DataSource } from "typeorm"
+import { AppDataSource } from "./data-source"
 
-const AppDataSource = new DataSource({
-  type: "postgres",
-  host: "localhost",
-  port: 5432,
-  username: "rentacar",
-  password: "rentacarpassword",
-  database: "rentacar",
-  logging: false,
-  entities: [],
-  migrations: [],
-  subscribers: [],
-})
-
-AppDataSource.initialize()
-  .then(() => console.info('Database initialized!'))
-  .catch(error => console.log(error))
+export const initializeDatabase = (): Promise<DataSource> => {
+  return AppDataSource.setOptions({
+    host: 'pg_rentacar',
+  }).initialize()
+}

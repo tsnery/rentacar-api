@@ -1,6 +1,19 @@
 version: "3.7"
 
 services:
+  pg_rentacar:
+    image: postgres:alpine
+    container_name: pg_rentacar
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=rentacar
+      - POSTGRES_PASSWORD=rentacarpassword
+      - POSTGRES_DB=rentacar
+    volumes:
+      - pgdata:/data/postgres
+
   app:
     build: .
     container_name: rentacar
@@ -9,3 +22,11 @@ services:
       - 3001:3001
     volumes:
       - .:/usr/app
+    links:
+      - pg_rentacar
+    depends_on:
+      - pg_rentacar
+
+volumes:
+  pgdata:
+    driver: local
