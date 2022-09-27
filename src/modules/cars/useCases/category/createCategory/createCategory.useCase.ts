@@ -1,10 +1,12 @@
 import { ICategoryRepository } from "../../../repositories/category/category.types"
 import { CreateCategoryUseCaseRequest } from "./createCategory.types"
+import { inject, injectable } from 'tsyringe'
 
+@injectable()
 export class CreateCategoryUseCase {
   private categoryRepository: ICategoryRepository
 
-  constructor(categoryRepository: ICategoryRepository) {
+  constructor(@inject('CategoryRepository') categoryRepository: ICategoryRepository) {
     this.categoryRepository = categoryRepository
   }
 
