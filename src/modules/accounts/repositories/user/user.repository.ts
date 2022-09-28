@@ -10,13 +10,12 @@ export class UserRepository implements IUserRepository {
     this.repository = AppDataSource.getRepository(User)
   }
 
-  async create({ name, email, password, driver_license, username }: ICreateUserDTO): Promise<void> {
+  async create({ name, email, password, driver_license }: ICreateUserDTO): Promise<void> {
     const user = this.repository.create({
       name,
       email,
       password,
-      driver_license,
-      username
+      driver_license
     })
 
     await this.repository.save(user)
