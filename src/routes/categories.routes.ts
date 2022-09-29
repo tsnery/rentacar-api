@@ -12,7 +12,7 @@ const listCategoriesContorller = new ListCategoriesController()
 const importCategoryController = new ImportCategoryController()
 
 const upload = multer({
-  dest: './temp',
+  dest: './tmp',
 })
 
 categoriesRoutes.post('/', createCategoryController.handle)
