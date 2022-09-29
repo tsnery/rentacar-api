@@ -21,10 +21,14 @@ export async function checkAuthentication(request: Request, response: Response, 
 
     const usersRepository = new UserRepository()
 
-    const userExists = await usersRepository.findById(String(user_id))
+    const user = await usersRepository.findById(String(user_id))
 
-    if (!userExists) {
+    if (!user) {
       throw new AppError('User does not exists!', 401)
+    }
+
+    request.user = {
+      id: String(user_id)
     }
 
     next()
