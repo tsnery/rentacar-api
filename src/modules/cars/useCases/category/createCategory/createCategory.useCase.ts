@@ -1,6 +1,7 @@
 import { ICategoryRepository } from "../../../repositories/category/category.types"
 import { CreateCategoryUseCaseRequest } from "./createCategory.types"
 import { inject, injectable } from 'tsyringe'
+import { AppError } from "../../../../../errors/AppError"
 
 @injectable()
 export class CreateCategoryUseCase {
@@ -15,7 +16,7 @@ export class CreateCategoryUseCase {
     const categoryAlreadyExists = await this.categoryRepository.findByName(name)
 
     if (categoryAlreadyExists) {
-      throw new Error('Category already exists! Please, create another one.')
+      throw new AppError('Category already exists! Please, create another one.')
     }
 
     this.categoryRepository.create({ name, description })

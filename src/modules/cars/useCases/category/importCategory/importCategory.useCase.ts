@@ -4,6 +4,7 @@ import { inject, injectable } from 'tsyringe'
 
 import { IImportCategoryData, IImportCategoryRequest } from "./importCategory.types";
 import { CategoryRepository } from '../../../repositories/category/category.repository';
+import { AppError } from '../../../../../errors/AppError';
 
 @injectable()
 export class ImportCategoryUseCase {
@@ -38,7 +39,7 @@ export class ImportCategoryUseCase {
 
   async execute({ file }: IImportCategoryRequest): Promise<void> {
     if (!file) {
-      throw new Error('No file was found! Please, try again.')
+      throw new AppError('No file was found! Please, try again.')
     }
 
     const categories = await this.loadCategories(file)

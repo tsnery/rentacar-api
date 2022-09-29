@@ -1,5 +1,6 @@
 import { hash } from "bcryptjs";
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../../errors/AppError";
 import { ICreateUserDTO, IUserRepository } from "../../../repositories/user/user.types";
 
 @injectable()
@@ -11,7 +12,7 @@ export class CreateUserUseCase {
     const userAlreadyExists = await this.userRepository.findByEmail(email)
 
     if (userAlreadyExists) {
-      throw new Error('This email is already been used')
+      throw new AppError('This email is already been used')
     }
 
     const passwordHash = await hash(password, 8)

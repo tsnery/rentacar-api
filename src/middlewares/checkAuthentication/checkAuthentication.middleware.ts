@@ -1,18 +1,19 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
+import { AppError } from "../../errors/AppError";
 import { UserRepository } from "../../modules/accounts/repositories/user/user.repository";
 
 export async function checkAuthentication(request: Request, response: Response, next: NextFunction) {
   const authHeader = request.headers.authorization
 
   if (!authHeader) {
-    throw new Error('Token is missing!')
+    throw new AppError('Token is missing!', 401)
   }
 
   const [bearer, token] = authHeader.split(' ')
 
   if (!(bearer && token)) {
-    throw new Error('Token malformatted!')
+    throw new AppError('Token malformatted!', 401)
   }
 
   try {
@@ -23,12 +24,12 @@ export async function checkAuthentication(request: Request, response: Response, 
     const userExists = await usersRepository.findById(String(user_id))
 
     if (!userExists) {
-      throw new Error('User does not exists!')
+      throw new AppError('User does not exists!', 401)
     }
 
     next()
   } catch (error) {
-    throw new Error('Invalid token!')
+    throw new AppError('Invalid token!', 401)
   }
 
 }
