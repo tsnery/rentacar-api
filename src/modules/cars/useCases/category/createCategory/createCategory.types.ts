@@ -1,3 +1,3 @@
 import { Category } from "../../../entities/Category";
 
-export interface CreateCategoryUseCaseRequest extends Pick<Category, 'name' | 'description'> { }
+export interface ICreateCategoryUseCaseRequest extends Pick<Category, 'name' | 'description'> { }
