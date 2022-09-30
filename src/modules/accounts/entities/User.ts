@@ -3,29 +3,29 @@ import { v4 as uuidv4 } from 'uuid'
 
 @Entity('users')
 export class User {
-  @PrimaryColumn()
+  @PrimaryColumn('varchar')
   id?: string
 
-  @Column()
+  @Column('varchar')
   name!: string
 
-  @Column()
+  @Column('varchar')
   email!: string
 
-  @Column()
+  @Column('varchar')
   password!: string
 
-  @Column()
+  @Column('varchar')
   driver_license!: string
 
-  @Column()
+  @Column('bool')
   is_admin!: boolean
+
+  @Column('varchar')
+  avatar?: string
 
   @CreateDateColumn()
   created_at!: Date
-
-  @Column()
-  avatar!: string
 
   constructor() {
     if (!this.id) {
