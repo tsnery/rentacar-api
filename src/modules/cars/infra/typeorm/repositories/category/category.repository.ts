@@ -1,8 +1,8 @@
 import { Repository } from 'typeorm'
 
+import { Category } from './../../entities/Category';
 import { CreateCategoryDTO, ICategoryRepository } from "./category.types";
-import { Category } from "@modules/cars/entities/Category";
-import { AppDataSource } from "database/data-source";
+import { AppDataSource } from "@shared/infra/typeorm/data-source";
 
 export class CategoryRepository implements ICategoryRepository {
 

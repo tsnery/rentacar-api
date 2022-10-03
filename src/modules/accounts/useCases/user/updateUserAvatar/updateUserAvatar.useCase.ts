@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe";
 
-import { User } from "@modules/accounts/entities/User";
-import { IUserRepository } from "@modules/accounts/repositories/user/user.types";
+import { IUserRepository } from "@modules/accounts/infra/typeorm/repositories/user/user.types";
 import { deleteFile } from "@utils/file";
 
 import { IUpdateUserAvatarRequest } from "./updateUserAvatar.types";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
 
 @injectable()
 export class UpdateUserAvatarUseCase {

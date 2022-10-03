@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
-import { AppError } from "../../errors/AppError";
-import { UserRepository } from "../../modules/accounts/repositories/user/user.repository";
+import { AppError } from "../../../errors/AppError";
+import { UserRepository } from "@modules/accounts/infra/typeorm/repositories/user/user.repository";
 
 export async function checkAuthentication(request: Request, response: Response, next: NextFunction) {
   const authHeader = request.headers.authorization

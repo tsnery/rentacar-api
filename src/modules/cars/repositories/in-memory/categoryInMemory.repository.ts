@@ -1,6 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { CreateCategoryDTO, ICategoryRepository } from '../category/category.types'
+import { CreateCategoryDTO, ICategoryRepository } from '../../infra/typeorm/repositories/category/category.types'
 import { Category } from '@modules/cars/entities/Category'
 
 export class CategoryRepositoryInMemory implements ICategoryRepository {

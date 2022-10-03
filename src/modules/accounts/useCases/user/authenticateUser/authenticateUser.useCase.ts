@@ -2,8 +2,8 @@ import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
-import { AppError } from "@errors/AppError";
-import { IUserRepository } from "@modules/accounts/repositories/user/user.types";
+import { AppError } from "@shared/errors/AppError";
+import { IUserRepository } from "@modules/accounts/infra/typeorm/repositories/user/user.types";
 import { IAuthenticateUserRequest, IAuthenticateUserResponse } from "./authenticateUser.types";
 
 @injectable()

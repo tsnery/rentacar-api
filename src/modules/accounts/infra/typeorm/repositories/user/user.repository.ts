@@ -1,7 +1,7 @@
 import { Repository } from "typeorm";
 
-import { User } from "@modules/accounts/entities/User";
-import { AppDataSource } from "database/data-source";
+import { User } from './../../entities/User';
+import { AppDataSource } from "@shared/infra/typeorm/data-source";
 import { ICreateUserDTO, IUserRepository } from "./user.types";
 
 export class UserRepository implements IUserRepository {
