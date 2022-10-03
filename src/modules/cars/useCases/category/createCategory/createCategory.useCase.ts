@@ -1,7 +1,8 @@
-import { ICategoryRepository } from "../../../repositories/category/category.types"
-import { ICreateCategoryUseCaseRequest } from "./createCategory.types"
 import { inject, injectable } from 'tsyringe'
-import { AppError } from "../../../../../errors/AppError"
+
+import { ICreateCategoryUseCaseRequest } from "./createCategory.types"
+import { ICategoryRepository } from "@modules/cars/repositories/category/category.types"
+import { AppError } from "@errors/AppError"
 
 @injectable()
 export class CreateCategoryUseCase {

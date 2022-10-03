@@ -1,7 +1,8 @@
-import { Category } from "../../entities/Category";
-import { CreateCategoryDTO, ICategoryRepository } from "./category.types";
 import { Repository } from 'typeorm'
-import { AppDataSource } from "../../../../database/data-source";
+
+import { CreateCategoryDTO, ICategoryRepository } from "./category.types";
+import { Category } from "@modules/cars/entities/Category";
+import { AppDataSource } from "database/data-source";
 
 export class CategoryRepository implements ICategoryRepository {
 

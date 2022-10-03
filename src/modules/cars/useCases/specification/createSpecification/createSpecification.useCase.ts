@@ -1,7 +1,8 @@
-import { ISpecificationRepository } from "../../../repositories/specification/specification.types";
-import { ICreateSpecificationRequest } from "./createSpecification.types";
 import { inject, injectable } from 'tsyringe'
-import { AppError } from "../../../../../errors/AppError";
+
+import { AppError } from '@errors/AppError';
+import { ISpecificationRepository } from '@modules/cars/repositories/specification/specification.types';
+import { ICreateSpecificationRequest } from "./createSpecification.types";
 
 @injectable()
 export class CreateSpecificationUseCase {

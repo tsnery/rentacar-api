@@ -3,8 +3,8 @@ import { parse } from 'csv-parse'
 import { inject, injectable } from 'tsyringe'
 
 import { IImportCategoryData, IImportCategoryRequest } from "./importCategory.types";
-import { CategoryRepository } from '../../../repositories/category/category.repository';
-import { AppError } from '../../../../../errors/AppError';
+import { AppError } from '@errors/AppError';
+import { CategoryRepository } from '@modules/cars/repositories/category/category.repository';
 
 @injectable()
 export class ImportCategoryUseCase {

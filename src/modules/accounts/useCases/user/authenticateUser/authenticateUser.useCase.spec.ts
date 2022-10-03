@@ -1,7 +1,8 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import { AppError } from "../../../../../errors/AppError";
-import { UserRepositoryInMemory } from "../../../repositories/in-memory/userInMemory.repository";
-import { ICreateUserDTO } from "../../../repositories/user/user.types";
+
+import { UserRepositoryInMemory } from "@modules/accounts/repositories/in-memory/userInMemory.repository";
+import { ICreateUserDTO } from "@modules/accounts/repositories/user/user.types";
+import { AppError } from "@errors/AppError";
 import { CreateUserUseCase } from "../createUser/createUser.useCase";
 import { AuthenticateUserUseCase } from "./authenticateUser.useCase";
 

@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { AppError } from '../../../../../errors/AppError'
-import { CategoryRepositoryInMemory } from '../../../repositories/in-memory/categoryInMemory.repository'
+
+import { AppError } from '@errors/AppError'
+import { CategoryRepositoryInMemory } from '@modules/cars/repositories/in-memory/categoryInMemory.repository'
 import { ICreateCategoryUseCaseRequest } from './createCategory.types'
 import { CreateCategoryUseCase } from './createCategory.useCase'
 

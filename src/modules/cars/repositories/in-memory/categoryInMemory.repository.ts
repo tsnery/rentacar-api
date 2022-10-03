@@ -1,6 +1,7 @@
-import { Category } from '../../entities/Category';
-import { CreateCategoryDTO, ICategoryRepository } from '../category/category.types'
 import { v4 as uuidV4 } from 'uuid'
+
+import { CreateCategoryDTO, ICategoryRepository } from '../category/category.types'
+import { Category } from '@modules/cars/entities/Category'
 
 export class CategoryRepositoryInMemory implements ICategoryRepository {
 

@@ -1,7 +1,9 @@
 import { inject, injectable } from "tsyringe";
-import { deleteFile } from "../../../../../utils/file";
-import { User } from "../../../entities/User";
-import { IUserRepository } from "../../../repositories/user/user.types";
+
+import { User } from "@modules/accounts/entities/User";
+import { IUserRepository } from "@modules/accounts/repositories/user/user.types";
+import { deleteFile } from "@utils/file";
+
 import { IUpdateUserAvatarRequest } from "./updateUserAvatar.types";
 
 @injectable()
