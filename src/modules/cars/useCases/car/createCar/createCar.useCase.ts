@@ -4,10 +4,10 @@ import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { ICreateCarRequest } from "./createCar.types";
 
-// @injectable()
+@injectable()
 export class CreateCarUseCase {
   constructor(
-    // @inject('CarRepository') 
+    @inject('CarRepository')
     private carRepository: ICarRepository
   ) { }
 
