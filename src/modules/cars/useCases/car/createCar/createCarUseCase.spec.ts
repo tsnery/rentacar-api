@@ -55,4 +55,20 @@ describe('Create a car', () => {
       await createCarUseCase.execute(car2)
     }).rejects.toBeInstanceOf(AppError)
   })
+
+  it('Should be able to create a car with is_avaible true by default', async () => {
+    const car1: ICreateCarRequest = {
+      name: 'Teste name',
+      brand: 'Teste brand',
+      daily_rate: 1,
+      description: 'Teste description',
+      fine_amount: 10,
+      license_plate: 'asdasdasd',
+      category_id: 'teste'
+    }
+
+    const newCar = await createCarUseCase.execute(car1)
+
+    expect(newCar.is_available).toBe(true)
+  })
 })
