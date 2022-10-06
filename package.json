@@ -7,7 +7,8 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "dev": "ts-node-dev -r tsconfig-paths/register --poll --inspect --respawn --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
-    "typeorm": "typeorm-ts-node-commonjs"
+    "typeorm": "typeorm-ts-node-commonjs",
+    "seed:admin": "ts-node-dev src/shared/infra/typeorm/seeds/admin.ts"
   },
   "keywords": [],
   "author": "Tainan Nery",
