@@ -17,6 +17,8 @@ async function create() {
     VALUES($1, $2, $3, $4, $5, $6, $7)`,
     [id, 'Tainan Admin', 'admin@email.com', '123123', password, true, new Date()]
   )
+
+  await (await connection).destroy()
 }
 
 create().then(() => console.log('User admin created!'))
