@@ -1,6 +1,7 @@
 import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
-import { ICarRepository } from "../ICarRepository";
+import { isObjectEmpty } from "@utils/isObjectEmpty";
+import { ICarRepository, IFindAvailableProps } from "../ICarRepository";
 
 export class CarRepositoryInMemory implements ICarRepository {
   cars: Car[] = []
@@ -35,6 +36,28 @@ export class CarRepositoryInMemory implements ICarRepository {
     const car = this.cars.find(car => car.license_plate === license_plate) || null
 
     return car
+  }
+
+  async findAvailable(searchParams: IFindAvailableProps): Promise<Car[]> {
+    const availablesCars = this.cars.filter(car => car.is_available)
+
+    if (isObjectEmpty(searchParams)) {
+      return availablesCars
+    }
+
+    const filteredCars = availablesCars.filter(car => {
+      if (searchParams.brand && car.brand === searchParams.brand) {
+        return car
+      } else if (searchParams.category_id && searchParams.category_id === car.category_id) {
+        return car
+      } else if (searchParams.name && car.name === searchParams.name) {
+        return car
+      } else {
+        return null
+      }
+    })
+
+    return filteredCars
   }
 
 }
