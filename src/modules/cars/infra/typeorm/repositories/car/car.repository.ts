@@ -1,7 +1,6 @@
 import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
 import { ICarRepository, IFindAvailableProps } from "@modules/cars/repositories/ICarRepository";
 import { AppDataSource } from "@shared/infra/typeorm/data-source";
-import { inject } from "tsyringe";
 import { Repository } from "typeorm";
 import { Car } from "../../entities/Car";
 
@@ -20,7 +19,8 @@ export class CarRepository implements ICarRepository {
     description,
     fine_amount,
     license_plate,
-    name
+    name,
+    specifications
   }: ICreateCarDTO): Promise<Car> {
     const car = this.repository.create({
       brand,
@@ -29,7 +29,8 @@ export class CarRepository implements ICarRepository {
       description,
       fine_amount,
       license_plate,
-      name
+      name,
+      specifications
     })
 
     await this.repository.save(car)
@@ -54,5 +55,9 @@ export class CarRepository implements ICarRepository {
     const cars = await carsQuery.getMany()
 
     return cars
+  }
+
+  async findById(car_id: string): Promise<Car | null> {
+    return await this.repository.findOne({ where: { id: car_id } })
   }
 }
