@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe'
 
 import { AppError } from '@shared/errors/AppError';
-import { ISpecificationRepository } from '@modules/cars/infra/typeorm/repositories/specification/specification.types';
 import { ICreateSpecificationRequest } from "./createSpecification.types";
+import { ISpecificationRepository } from '@modules/cars/repositories/ISpecificationRepository';
 
 @injectable()
 export class CreateSpecificationUseCase {

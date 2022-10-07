@@ -1,8 +1,8 @@
 import { Repository } from "typeorm";
 
 import { AppDataSource } from "@shared/infra/typeorm/data-source";
-import { ICreateSpecificationDTO, ISpecificationRepository } from "./specification.types";
 import { Specification } from "@modules/cars/infra/typeorm/entities/Specification";
+import { ICreateSpecificationDTO, ISpecificationRepository } from "@modules/cars/repositories/ISpecificationRepository";
 
 export class SpecificationRepository implements ISpecificationRepository {
 
@@ -10,6 +10,9 @@ export class SpecificationRepository implements ISpecificationRepository {
 
   constructor() {
     this.repository = AppDataSource.getRepository(Specification)
+  }
+  findByIds(ids: string[]): Promise<Specification[]> {
+    throw new Error("Method not implemented.");
   }
 
   async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
