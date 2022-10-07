@@ -1,5 +1,5 @@
 import { ICreateCarDTO } from "@modules/cars/dtos/ICreateCarDTO";
-import { ICarRepository } from "@modules/cars/repositories/ICarRepository";
+import { ICarRepository, IFindAvailableProps } from "@modules/cars/repositories/ICarRepository";
 import { AppDataSource } from "@shared/infra/typeorm/data-source";
 import { inject } from "tsyringe";
 import { Repository } from "typeorm";
@@ -43,4 +43,16 @@ export class CarRepository implements ICarRepository {
     return car
   }
 
+  async findAvailable({ name, brand, category_id }: Partial<IFindAvailableProps>): Promise<Car[]> {
+    const carsQuery = this.repository.createQueryBuilder('c')
+      .where("is_available = :is_available", { is_available: true })
+
+    if (brand) carsQuery.andWhere("c.brand = :brand", { brand })
+    if (name) carsQuery.andWhere("c.name = :name", { name })
+    if (category_id) carsQuery.andWhere("c.category_id = :category_id", { category_id })
+
+    const cars = await carsQuery.getMany()
+
+    return cars
+  }
 }
