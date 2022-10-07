@@ -11,4 +11,5 @@ export interface ICarRepository {
   create(data: ICreateCarDTO): Promise<Car>
   findByLincesePlate(license_plate: string): Promise<Car | null>
   findAvailable({ name, brand, category_id }: Partial<IFindAvailableProps>): Promise<Car[]>
+  findById(car_id: string): Promise<Car | null>
 }
