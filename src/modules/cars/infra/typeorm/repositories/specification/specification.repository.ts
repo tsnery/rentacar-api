@@ -15,13 +15,15 @@ export class SpecificationRepository implements ISpecificationRepository {
     throw new Error("Method not implemented.");
   }
 
-  async create({ name, description }: ICreateSpecificationDTO): Promise<void> {
+  async create({ name, description }: ICreateSpecificationDTO): Promise<Specification> {
     const specification = this.repository.create({
       name,
       description
     })
 
-    await this.repository.save(specification)
+    const response = await this.repository.save(specification)
+
+    return response
   }
 
   async findByName(name: string): Promise<Specification | null> {
