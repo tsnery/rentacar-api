@@ -6,14 +6,14 @@ import { CreateCarSpecificationUseCase } from "./createCarSpecification.useCase"
 
 let createCarSpecificationUseCase: CreateCarSpecificationUseCase
 let carRepository: CarRepositoryInMemory
-let specificationRepositroy: SpecificationRepositoryInMemory
+let specificationRepositroyInMemory: SpecificationRepositoryInMemory
 
 describe('Create Car Specification', () => {
 
   beforeEach(() => {
     carRepository = new CarRepositoryInMemory()
-    specificationRepositroy = new SpecificationRepositoryInMemory()
-    createCarSpecificationUseCase = new CreateCarSpecificationUseCase(carRepository, specificationRepositroy)
+    specificationRepositroyInMemory = new SpecificationRepositoryInMemory()
+    createCarSpecificationUseCase = new CreateCarSpecificationUseCase(carRepository, specificationRepositroyInMemory)
   })
 
   it('should not be able to add a new specification to the non-existent car', async () => {
@@ -38,7 +38,12 @@ describe('Create Car Specification', () => {
       category_id: 'teste'
     })
 
-    const specifications_id = ['123123']
+    const specification = await specificationRepositroyInMemory.create({
+      description: 'test',
+      name: 'test'
+    })
+
+    const specifications_id = [specification.id]
 
     await createCarSpecificationUseCase.execute({
       car_id: car.id!,
