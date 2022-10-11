@@ -60,7 +60,6 @@ It is also a project that was made in order to learn backend development using N
 **Requsitio funcional**
 
 - Deve ser possível cadastrar a imagem do carro
-- Deve ser possível listar todos os carros
 
 **Requisito não-funcional**
 
