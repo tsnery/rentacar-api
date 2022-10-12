@@ -4,7 +4,7 @@ import multer from "multer";
 import { checkAuthentication } from "@shared/infra/middlewares/checkAuthentication/checkAuthentication.middleware";
 import { CreateUserController } from "@modules/accounts/useCases/user/createUser/createUser.controller";
 import { UpdateUserAvatarController } from "@modules/accounts/useCases/user/updateUserAvatar/updateUserAvatar.controller";
-import uploadAvatar from "../../../../config/uploadAvatar";
+import uploadAvatar from "../../../../config/uploadConfig";
 
 const usersRoutes = Router()
 
