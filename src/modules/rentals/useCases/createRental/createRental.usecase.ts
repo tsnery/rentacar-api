@@ -1,15 +1,16 @@
-import dayjs from "dayjs";
-
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalRepository } from "@modules/rentals/repositories/IRentalRepository.types";
 import { AppError } from "@shared/errors/AppError";
 import { ICreateRentalRequest } from "./createRental.types";
 import { IDateProvider } from "@shared/providers/dateProvider/dateProvider.types";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 export class CreateRentalUseCase {
-
   constructor(
+    @inject('RentalRepository')
     private rentalRepository: IRentalRepository,
+    @inject('DateProvider')
     private dateProvider: IDateProvider
   ) { }
 
@@ -29,18 +30,18 @@ export class CreateRentalUseCase {
       throw new AppError('User already has a rental in progress!')
     }
 
-    const rental = await this.rentalRepository.create({
-      user_id,
-      car_id,
-      expected_return_date
-    })
-
     const dateNow = this.dateProvider.dateNow()
     const compare = this.dateProvider.compareInHours(expected_return_date, dateNow)
 
     if (compare < MINIMUM_HOUR) {
       throw new AppError('Rental must be at least 24h of the return date')
     }
+
+    const rental = await this.rentalRepository.create({
+      user_id,
+      car_id,
+      expected_return_date
+    })
 
     return rental
   }
