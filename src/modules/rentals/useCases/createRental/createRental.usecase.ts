@@ -1,15 +1,17 @@
 import dayjs from "dayjs";
-import utc from 'dayjs/plugin/utc';
+
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalRepository } from "@modules/rentals/repositories/IRentalRepository.types";
 import { AppError } from "@shared/errors/AppError";
 import { ICreateRentalRequest } from "./createRental.types";
-
-dayjs.extend(utc)
+import { IDateProvider } from "@shared/providers/dateProvider/dateProvider.types";
 
 export class CreateRentalUseCase {
 
-  constructor(private rentalRepository: IRentalRepository) { }
+  constructor(
+    private rentalRepository: IRentalRepository,
+    private dateProvider: IDateProvider
+  ) { }
 
   async execute({ car_id, user_id, expected_return_date }: ICreateRentalRequest): Promise<Rental> {
 
@@ -33,9 +35,8 @@ export class CreateRentalUseCase {
       expected_return_date
     })
 
-    const dateNow = dayjs().utc().local().format()
-    const expectedReturnDateFormat = dayjs(expected_return_date).utc().local().format()
-    const compare = dayjs(expectedReturnDateFormat).diff(dateNow, 'hours')
+    const dateNow = this.dateProvider.dateNow()
+    const compare = this.dateProvider.compareInHours(expected_return_date, dateNow)
 
     if (compare < MINIMUM_HOUR) {
       throw new AppError('Rental must be at least 24h of the return date')
