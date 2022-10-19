@@ -21,8 +21,6 @@ type TDefaults = {
 export const initializeDatabase = (): Promise<DataSource> => {
   const dbOptions = AppDataSource.options as IDBOptions
 
-  console.log('ENV', process.env.NODE_ENV)
-
   const environment: keyof TEnviroment = process.env.NODE_ENV as keyof TEnviroment || 'dev'
 
   const defaults: TDefaults = {
