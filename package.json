@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest",
+    "test": "cross-env NODE_ENV=test vitest",
     "coverage": "vitest run --coverage",
-    "dev": "ts-node-dev -r tsconfig-paths/register --poll --inspect --respawn --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "dev": "cross-env NODE_ENV=dev ts-node-dev -r tsconfig-paths/register --poll --inspect --respawn --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "seed:admin": "ts-node-dev src/shared/infra/typeorm/seeds/admin.ts"
   },
@@ -38,6 +38,7 @@
     "@types/swagger-ui-express": "^4.1.3",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^23.0.0",

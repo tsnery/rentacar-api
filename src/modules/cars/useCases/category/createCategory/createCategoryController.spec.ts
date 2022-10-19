@@ -1,0 +1,15 @@
+import { describe, expect, it } from "vitest";
+import request from 'supertest';
+import { app } from "@shared/infra/http/app";
+
+describe('Create Category Controller', async () => {
+  it('should be able to create a new category', async () => {
+    const response = await request(app).post('/categories')
+      .send({
+        name: 'Category supertest',
+        description: 'Category supertest desc'
+      })
+
+    expect(response.status).toBe(201)
+  })
+})
