@@ -3,7 +3,7 @@ import express, { NextFunction, Request, Response } from 'express'
 import 'express-async-errors'
 import swaggerUI from 'swagger-ui-express'
 import { router } from '../routes'
-import { initializeDatabase } from '../../typeorm'
+import { initializeDatabase } from "@shared/infra/typeorm"
 
 import '../../../container'
 
