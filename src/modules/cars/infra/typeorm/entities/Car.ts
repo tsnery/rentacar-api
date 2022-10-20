@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm'
-import { v4 as uuidV4 } from 'uuid'
+import { randomUUID } from 'node:crypto'
 import { Category } from './Category'
 import { Specification } from './Specification'
 
@@ -52,7 +52,7 @@ export class Car {
 
   constructor() {
     if (!this.id) {
-      this.id = uuidV4()
+      this.id = randomUUID()
     }
   }
 }
