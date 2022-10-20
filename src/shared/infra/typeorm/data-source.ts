@@ -1,10 +1,12 @@
+import { DataSource } from "typeorm";
+
 import { User } from "@modules/accounts/infra/typeorm/entities/User";
 import { Car } from "@modules/cars/infra/typeorm/entities/Car";
 import { CarImage } from "@modules/cars/infra/typeorm/entities/CarImage";
 import { Category } from "@modules/cars/infra/typeorm/entities/Category";
 import { Specification } from "@modules/cars/infra/typeorm/entities/Specification";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
-import { DataSource } from "typeorm";
+
 import { CreateCategories1664201347336 } from "./migrations/1664201347336-CreateCategories";
 import { CreateSpecifications1664318699145 } from "./migrations/1664318699145-CreateSpecifications";
 import { CreateUsers1664372234367 } from "./migrations/1664372234367-CreateUsers";
