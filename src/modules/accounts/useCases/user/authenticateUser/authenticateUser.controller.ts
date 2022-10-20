@@ -8,8 +8,8 @@ export class AuthenticateUserController {
 
     const authenticateUserUseCase = container.resolve(AuthenticateUserUseCase)
 
-    const authentication = await authenticateUserUseCase.execute({ email, password })
+    const { token, user } = await authenticateUserUseCase.execute({ email, password })
 
-    return response.status(200).json({ authentication })
+    return response.status(200).json({ token, user })
   }
 }
