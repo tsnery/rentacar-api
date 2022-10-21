@@ -82,6 +82,7 @@ It is also a project that was made in order to learn backend development using N
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo usuário
 - Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro
 - O usuário deve estar logado na aplicação
+- Ao realizar aluguel, o status do carro deverá ser definido para indisponível
 
 # Decolução de carro
 

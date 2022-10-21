@@ -4,6 +4,7 @@ import { isObjectEmpty } from "@utils/isObjectEmpty";
 import { ICarRepository, IFindAvailableProps } from "../ICarRepository";
 
 export class CarRepositoryInMemory implements ICarRepository {
+
   cars: Car[] = []
 
   async create({
@@ -66,6 +67,18 @@ export class CarRepositoryInMemory implements ICarRepository {
 
   async findById(car_id: string): Promise<Car | null> {
     return this.cars.find(car => car.id === car_id) || null
+  }
+
+  async updateAvailability(id: string, availability: boolean): Promise<void> {
+    this.cars = this.cars.map(car => {
+      if (car.id === id) {
+        car.is_available = false
+
+        return car
+      }
+      return car
+    })
+
   }
 
 }
