@@ -64,4 +64,14 @@ describe('Create Category Controller', () => {
 
     expect(response.status).toBe(400)
   })
+
+  it('should be able to list all categories', async () => {
+    const response = await request(app).get('/categories')
+
+    expect(response.status).toBe(200)
+    expect(response.body).length(1)
+    expect(response.body[0]).toHaveProperty('id')
+    expect(response.body[0].name).toEqual('Name Supertest')
+
+  })
 })
