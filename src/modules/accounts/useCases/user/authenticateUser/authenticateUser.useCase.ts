@@ -26,7 +26,6 @@ export class AuthenticateUserUseCase {
 
     const token = sign({}, "71547b2ff2302aed12b2e3c673304e02", {
       subject: String(user.id),
-      expiresIn: "1d"
     })
 
     const authenticationReturn: IAuthenticateUserResponse = {
