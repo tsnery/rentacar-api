@@ -26,7 +26,7 @@ export const AppDataSource = new DataSource({
   password: "rentacarpassword",
   database: "rentacar",
   logging: false,
-  entities: [User, Car, CarImage, Category, Specification, Rental],
+  entities: ['src/modules/**/infra/typeorm/entities/*.ts'],
   migrations: [
     CreateCategories1664201347336,
     CreateSpecifications1664318699145,
