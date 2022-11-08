@@ -92,3 +92,11 @@ It is also a project that was made in order to learn backend development using N
 - Ao realizar devolução, o usuário deverá ser liberado para outro aluguel
 - Caso o horário de devolução seja superior ao horário previsto de entrega, deverá ser cobrado multa proporcional aos dias de atraso
 - Caso haja multa, deverá ser somado ao total do aluguel
+
+# Listagem de alugueis para usuário
+
+**Requisito funcional**
+- Deve ser possível realizar a busca de todos os alugueis para o usuário
+
+**Regra de negócio**
+- O usuário deve estar logado na aplicação
