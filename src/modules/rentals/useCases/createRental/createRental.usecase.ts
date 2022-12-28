@@ -22,7 +22,7 @@ export class CreateRentalUseCase {
     const MINIMUM_HOUR = 24
 
     const carNotAvailable = await this.rentalRepository.findOpenRentalByCar(car_id)
-    console.log('car availability', carNotAvailable)
+    
     if (carNotAvailable) {
       throw new AppError('Car is not available!')
     }

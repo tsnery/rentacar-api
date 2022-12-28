@@ -26,7 +26,7 @@ describe('List availables cars', () => {
     })
 
     const cars = await listCarsUseCase.execute({})
-    console.log('CARS', cars)
+    
     expect(cars).toEqual([newCar])
   })
 

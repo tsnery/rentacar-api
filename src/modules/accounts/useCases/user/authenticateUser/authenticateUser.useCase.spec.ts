@@ -46,7 +46,7 @@ describe('Authenticate User', () => {
       await authenticateUserUseCase.execute({
         email: user.email, password: user.password
       })
-    }).rejects.toBeInstanceOf(AppError)
+    }).rejects.toEqual(new AppError('Email or password incorrect!'))
   })
 
   it('Should not be able to authenticate an incorrect password', async () => {
@@ -63,6 +63,6 @@ describe('Authenticate User', () => {
       await authenticateUserUseCase.execute({
         email: user.email, password: 'wrongpassword'
       })
-    }).rejects.toBeInstanceOf(AppError)
+    }).rejects.toEqual(new AppError('Email or password incorrect!'))
   })
 })

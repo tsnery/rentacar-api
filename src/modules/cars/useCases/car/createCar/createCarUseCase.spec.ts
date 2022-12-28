@@ -53,7 +53,7 @@ describe('Create a car', () => {
       }
 
       await createCarUseCase.execute(car2)
-    }).rejects.toBeInstanceOf(AppError)
+    }).rejects.toEqual(new AppError("Car already exists!"))
   })
 
   it('Should be able to create a car with is_avaible true by default', async () => {
