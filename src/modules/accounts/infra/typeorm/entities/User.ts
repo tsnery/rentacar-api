@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm'
 import { randomUUID } from 'node:crypto'
 
 @Entity('users')
-export class User {
+class User {
   @PrimaryColumn('varchar')
   id?: string
 
@@ -33,3 +33,5 @@ export class User {
     }
   }
 }
+
+export { User }
